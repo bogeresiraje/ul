@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 import text from '../../res/styles/text';
+import { colors } from '../../res/colors';
 
 
 export const LyricsList = ({ lyricsList, isSelected=f=>f, toggleSelected=f=>f }) => {
@@ -20,41 +21,48 @@ export const LyricsList = ({ lyricsList, isSelected=f=>f, toggleSelected=f=>f })
 
 const LyricsLine = ({ lyrics, toggleSelected }) => {
     if(lyrics.line) {
-        return (
-            <TouchableOpacity
-                onPress={ () => toggleSelected(lyrics.id, lyrics.line, lyrics.selected) }
-            >
-                <Text style={ lyrics.selected ? styles.selectedLine : styles.nonSelectedLine } >
-                    { lyrics.line }
-                </Text>
-            </TouchableOpacity>
-        );
-    } else {
         if(lyrics.selected) {
             return (
-                <Text style={ styles.selectedLine } >
-                    { lyrics.line }
-                </Text>
+                <TouchableOpacity
+                    onPress={ () => toggleSelected(lyrics.id, lyrics.line, lyrics.selected) }
+                >
+                    <Text style={ styles.selectedLine } >
+                        { lyrics.line }
+                    </Text>
+                </TouchableOpacity>
             );
-        } else if (lyrics.num_edits) {
+        }
+        else if (lyrics.num_edits) {
             return (
-                <Text style={ styles.editedLine } >
-                    { lyrics.line }
-                </Text>
-            );
-        } else if(lyrics.num_comments) {
-            return (
-                <Text style={ styles.commentedLine } >
-                    { lyrics.line }
-                </Text>
+                <TouchableOpacity
+                    onPress={ () => toggleSelected(lyrics.id, lyrics.line, lyrics.selected) }
+                >
+                    <Text style={ styles.editedLine } >
+                        { lyrics.line }
+                    </Text>
+                </TouchableOpacity>
             );
         } else {
             return (
-                <Text style={ styles.nonSelectedLine } >
-                    { lyrics.line }
-                </Text>
+                <TouchableOpacity
+                    onPress={ () => toggleSelected(lyrics.id, lyrics.line, lyrics.selected) }
+                >
+                    <Text style={ styles.nonSelectedLine } >
+                        { lyrics.line }
+                    </Text>
+                </TouchableOpacity>
+                
             );
         }
+
+    } else {
+        return (
+            <React.Fragment>
+                <Text style={ styles.nonSelectedLine} >
+                    { lyrics.line }
+                </Text>
+            </React.Fragment>
+        );
     }
 };
 
@@ -63,7 +71,7 @@ const styles = StyleSheet.create({
     selectedLine: {
         padding: 7,
         textAlign: 'center',
-        backgroundColor: 'grey',
+        backgroundColor: 'gray',
     },
     nonSelectedLine: {
         textAlign: 'center',
@@ -72,11 +80,6 @@ const styles = StyleSheet.create({
     editedLine: {
         padding: 7,
         textAlign: 'center',
-        backgroundColor: '#e3dcf2',
-    },
-    commentedLine: {
-        padding: 7,
-        textAlign: 'center',
-        backgroundColor: '#b396f2',
+        backgroundColor: '#dedee2',
     },
 })

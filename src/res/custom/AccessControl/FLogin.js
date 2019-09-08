@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, View, TextInput, Text, StatusBar } from 'react-native';
+import { ScrollView, View, TextInput, Text, StatusBar, TouchableOpacity, StyleSheet } from 'react-native';
 import { FWrong } from '../FWrong';
 import layout from '../../styles/layout';
 import text from '../../styles/text';
@@ -152,6 +152,13 @@ const LoginForm = (props) => {
                 textStyles={{ color: colors.purple }}
             />
 
+            <Text style={ text.autoText }>OR?</Text>
+
+            <TouchableOpacity onPress={ () => navigation.navigate('RecoverAccount') }>
+                <Text style={ styles.forgot }>Forgot Password?</Text>
+            </TouchableOpacity>
+
+
         </View>
     );
 }
@@ -173,3 +180,14 @@ const SubmitBtn = ({ activeIndicator, validateAndSubmit }) => {
         );
     }
 };
+
+
+const styles = StyleSheet.create({
+    forgot: {
+        textAlign: 'center',
+        borderBottomWidth: 1,
+        width: '50%',
+        alignSelf: 'center',
+        marginTop: 10,
+    }
+})

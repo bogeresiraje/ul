@@ -16,6 +16,8 @@ import { FChangePhoto } from './src/res/custom/profile/FChangePhoto';
 import { AllComments } from './src/components/home/AllComments';
 import { EditLyrics } from './src/components/home/EditLyrics';
 import { CommentOnLyrics } from './src/components/home/CommentOnLyrics';
+import { FRecoverAccount } from './src/res/custom/AccessControl/FRecoverAccount';
+import { FChangePassword } from './src/res/custom/AccessControl/FChangePassword';
 
 
 const topNavigator = createMaterialTopTabNavigator(
@@ -125,6 +127,20 @@ const mainNavigator = createStackNavigator(
           ...inNavConfig
         })
     },
+    RecoverAccount: {
+      screen: FRecoverAccount,
+      navigationOptions: () => ({
+        headerTitle: 'Recover Account',
+        ...inNavConfig
+      })
+  },
+  ResetPassword: {
+    screen: FChangePassword,
+    navigationOptions: () => ({
+      headerTitle: 'Change Password',
+      ...inNavConfig
+    })
+},
     Profile: {
       screen: FProfile,
       navigationOptions: () => ({

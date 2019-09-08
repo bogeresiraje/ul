@@ -128,7 +128,8 @@ export class Lyrics extends Component {
             .then(response => response.json())
             .then(data => {
                 if(data.song) {
-                    this.setState({ song:data.song, refreshing: false });
+                    this.setState({ song:data.song, refreshing: false, numSelected: 0 });
+                    this.props.navigation.setParams({ numSelected: 0 });
                 } else {
                     this.setState({ somethingWrong: true, refreshing: false });
                 }

@@ -28,6 +28,11 @@ const Edit = ({ edit }) => (
             <View>
                 <Text style={ styles.title } >{ edit.user.name }</Text>
             </View>
+            <View>
+                <Text style={ styles.status }>
+                    { edit.status === 'pending' ? ' pending ' : ' accepted ' }
+                </Text>
+            </View>
         </View>
 
         <View>
@@ -49,4 +54,14 @@ const styles = StyleSheet.create({
         marginTop: 7,
         marginBottom: 7,
     },
+    status: {
+        color: colors.black,
+        margin: 7,
+        textAlign: 'right',
+        marginTop: 10,
+        padding: 3,
+        borderWidth: 1,
+        borderColor: colors.black,
+        borderRadius: 5,
+    }
 })
